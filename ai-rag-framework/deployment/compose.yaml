@@ -1,5 +1,6 @@
 include:
   - elasticsearch.yaml
+  - ollama.yaml
 services:
   alfresco-ai-framework:
     image: alfresco-ai-framework
@@ -7,8 +8,11 @@ services:
     environment:
       - SPRING_ELASTICSEARCH_URIS=${ELASTICSEARCH_URIS}
       - SPRING_AI_OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - SPRING_AI_OLLAMA_CHAT_OPTIONS_MODEL=${OLLAMA_MODEL}
     depends_on:
       elasticsearch:
         condition: service_healthy
+      ollama:
+        condition: service_started
     ports:
       - "9999:9999"
