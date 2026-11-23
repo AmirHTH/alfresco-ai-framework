@@ -9,6 +9,7 @@ services:
       - SPRING_ELASTICSEARCH_URIS=${ELASTICSEARCH_URIS}
       - SPRING_AI_OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
       - SPRING_AI_OLLAMA_CHAT_OPTIONS_MODEL=${OLLAMA_MODEL}
+      - SPRING_AI_OLLAMA_CHAT_OPTIONS_NUM_CTX=16384
     depends_on:
       elasticsearch:
         condition: service_healthy
